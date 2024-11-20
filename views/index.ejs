@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My top 10 books</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>My top 10 books</h1>
+  <a href="/books/add" class="btn">Add new book</a>
+  
+  <div class="books-list">
+    <% books.forEach(book => { %>
+      <div class="book">
+        <% if (book.cover_url) { %>
+          <img src="<%= book.cover_url %>" alt="<%= book.title %>">
+        <% } else { %>
+          <img src="placeholder.jpg" alt="Brak okładki">
+        <% } %>
+        <h2><%= book.title %></h2>
+        <p><strong>Author:</strong> <%= book.author %></p>
+        <p><strong>Rate:</strong> <%= book.rating %>/10</p>
+        <p><strong>Review:</strong> <%= book.review %></p>
+        
+        <form action="/books/<%= book.id %>/edit" method="GET">
+          <button type="submit">Edit review</button>
+        </form>
+        <form action="/books/<%= book.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete the book?');">
+          <button type="submit">Delete book</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>
