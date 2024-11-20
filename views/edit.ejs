@@ -2,16 +2,17 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Review</title>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
   <h1>Edit Review</h1>
   <form action="/books/<%= book.id %>" method="POST">
     <label for="review">Review:</label>
     <textarea id="review" name="review" required><%= book.review %></textarea><br>
-    <button type="submit">Save</button>
+    <div class="btn-container">
+        <button type="submit">Save</button>
+    </div>
   </form>
 </body>
 </html>
